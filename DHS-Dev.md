@@ -1,5 +1,11 @@
 # How to be able to do anything at DHS
 
+#### Get KeePass
+
+To be able to access the ISAM console, you need login keys. To get these you will need the following file.
+KeyPass File: \\DCVSFS4.internal.dept.local\dcvsfs4-shared-61015398\MAISIS\SOAPE Team\ISAM\tools
+Master Password: SoapeManage1!
+
 #### Install Git Bash (Windows)
 
 2. Open a the following path in a new explorer window.
