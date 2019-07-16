@@ -21,7 +21,7 @@ We now need to generate a public and private key which we can share with GitLab.
 2. Open Git Bash and run the following command.
 
 ```bash
-$ ssh-keygen -t ed25519
+$ ssh-keygen -t rsa -b 4096 -C "your_name@humanservices.gov.au"
 ```
 
 3. You will be prompted wish a message asking you where you would like to save your keys. Press the enter key.
@@ -30,6 +30,29 @@ $ ssh-keygen -t ed25519
 
 4. You'll be asked to enter a password. It's not really nesscessary in our case, so press the enter key twice to continue.
 
+5. Next we need to ensure the ssh-agent is running so we can add the SSH private key to the ssh-agent.
+
+```bash
+$ eval $(ssh-agent -s)
+$ ssh-add ~/.ssh/id_rsa
+```
+
+5. Next we need to copy the contents of the public key so we can add it to our GitHub account. Navigate to https://gitlab/profile/keys once you've copied the key.
+
+```bash
+$ clip < ~/.ssh/id_rsa.pub
+```
+
+6. Next we need to configure our local Git Environment. To do this, download the folllowing file located here to you H:/ drive and then run the below commands.
+https://gitlab.csda.gov.au/Operational-Automation/help-me-im-new-doco/blob/master/images/CSD-CA.pem
+   
+   Note you may need to change the file name if you didn't downloaded the file using Google Chrome.
+
+```bash
+$ git config --global user.name "<Firstname Surname>"
+$ git config --global user.email "<firstname.surname@humanservices.gov.au>"
+$ git config --global http.sslCAInfo /h/images_CSD-CA.pem
+```
 
 ## Get GitLab Access
 Get a GitLab account.
