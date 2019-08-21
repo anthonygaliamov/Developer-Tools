@@ -9,6 +9,15 @@ var cookie = {
     },
     remove(name){
         return macros.put("@SETCOOKIE@","" + name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;");
+    },
+    get(name, array){
+        var cookie = ""
+            for ( i = 0; i < array.length; i++){
+                cookieArr =  array[i].trim().split("=");
+                    if (cookieArr[0] == name)
+                        cookie = cookieArr[1];
+            }
+        return cookie;
     }
 };
 
@@ -16,6 +25,9 @@ var cookie = {
 cookie.set("SSOID", ssoCookieJWT, null);
 // Or
 cookie.remove("cookieName");
+// Or
+var cookiesArray = context.get(Scope.REQUEST, "urn:ibm:security:asf:request:header", "Cookie").split(";");
+var ssoIdCookie = cookie.get("SSOID", cookiesArray);
 
 // Template Function
 var cookie = "" + macro("@SETCOOKIE@");
