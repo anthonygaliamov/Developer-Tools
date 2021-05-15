@@ -163,10 +163,8 @@ $ ./create-secrets.sh
 $ oc process -f sam-openshift-template.yaml | oc create -f -
 ```
 
-  Before we proceed any futher, it's a good idea to open the OpenShift console and check our pods.
+Before we proceed any futher, it's a good idea to open the OpenShift console and check our pods.
 
 ```bash
 ./lmi-access.sh
 ```
-
-
